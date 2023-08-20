@@ -1,0 +1,76 @@
+{% schema %}
+{
+  "name": "t:sections.custom-section.presets.name",
+  "tag": "section",
+  "class": "custom-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "custom-section settings label"
+    }
+  ],
+  "max_blocks": 5,
+  "blocks": [
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         }
+       ]
+     },
+     {
+       "name": "text",
+       "type": "text",
+       "settings": [
+         {
+           "type": "text",
+           "id": "text",
+            "default": "Welcome to our store",
+            "label": "テキストを指定してください"
+         }
+       ]
+     }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.custom-section.presets.name"
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "Custom section"
+    }
+  }
+}
+{% endschema %}
+
+{% stylesheet %}
+/* 必要に応じてCSSを追加 */
+{% endstylesheet %}
+
+{% javascript %}
+/* 必要に応じてJavaScriptを追加 */
+{% endjavascript %}
+
+<div class="custom-section">
+  <!-- セクションの内容をここに追加 -->
+  <p>TRYANGLEが追加したカスタムセクションです。</p>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'slide' %}
+        <div class="slide" {{ block.shopify_attributes }}>
+          {{ block.settings.image | image_url: width: 300 | image_tag }}
+        </div>
+      {% when 'text' %}
+        <p class="text" {{ block.shopify_attributes }}>
+          {{ block.settings.text | escape }}
+        </p>
+    {% endcase %}
+  {% endfor %}
+</div>

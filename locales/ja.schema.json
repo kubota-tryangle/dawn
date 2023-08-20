@@ -668,6 +668,18 @@
         "name": "カスタムLiquid"
       }
     },
+    "custom-section": {
+      "name": "TRYANGLEが作成したセクション",
+      "settings": {
+        "custom_liquid": {
+          "label": "Liquidコード",
+          "info": "説明文説明文説明文説明文説明文説明文説明文説明文"
+        }
+      },
+      "presets": {
+        "name": "TRYANGLEが作成したセクション"
+      }
+    },
     "featured-blog": {
       "name": "ブログ記事",
       "settings": {
